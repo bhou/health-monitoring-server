@@ -56,6 +56,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
+
 db.connect((error) => {
   if (error) {
     console.error('Failed to connect to database', error.message);
