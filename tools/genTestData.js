@@ -16,7 +16,6 @@ function denodeify(func) {
 
 const connect = denodeify(db.connect);
 
-
 function createPatientData(patientInfo) {
   let createPatient = denodeify((done) => new Patient(patientInfo).save(done));
 
