@@ -1,6 +1,6 @@
 const db = require('../src/db');
-const Patient = require('../src/db/Schema/Patient');
-const Record = require('../src/db/Schema/Record');
+const Patient = require('../src/db/schema/Patient');
+const Record = require('../src/db/schema/Record');
 
 const TEST_PATIENT_NAME = 'TestPatient';
 
