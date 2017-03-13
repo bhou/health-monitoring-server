@@ -1,6 +1,6 @@
-const { buildSchema } = require('graphql');
+module.exports = `
+scalar Date
 
-const schema = `
 type BodyTemperature {
   value: Float
   unit: String
@@ -24,7 +24,7 @@ type BloodPressure {
 type Record {
   id: ID
   patientId: ID
-  timestamp: Int
+  timestamp: Date
   bodyTemperature: BodyTemperature
   bloodPressure: BloodPressure
 }
@@ -37,19 +37,27 @@ type Patient {
   photo: String
   age: Int
   bloodType: String
-  data: [Record]
 }
 
 type Query {
   patients(n: Int): [Patient],
-  patientData(id: ID, startTime: Int, endTime: Int, offset: Int, count: Int): [Record]
+  patientData(id: ID, startTime: Date, endTime: Date, offset: Int, count: Int): [Record]
 }
 
 type Mutation {
-  updateRecord(patientId: ID, recordId: ID, bodyTemperature: Float, systolicPressure: Float, diastolicPressure: Float): Record
-  deleteRecord(patientId: ID, recordId: ID): Record
+  # update record by id, 
+  updateRecord(
+    recordId: ID, 
+    bodyTemperature: Float, 
+    systolicPressure: Float, 
+    diastolicPressure: Float): Record
+  
+  # delete a record by id
+  deleteRecord(recordId: ID): Record
+}
+
+schema {
+  query: Query,
+  mutation: Mutation
 }
 `;
-
-
-module.exports = buildSchema(schema);

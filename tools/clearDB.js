@@ -2,7 +2,6 @@ const db = require('../src/db');
 const Patient = require('../src/db/schema/Patient');
 const Record = require('../src/db/schema/Record');
 
-
 db.connect(() => {
   Patient.remove({}, (error) => {
     if (error) {
@@ -21,6 +20,6 @@ db.connect(() => {
       db.disconnect();
     });
   });
-})
+});
 
 

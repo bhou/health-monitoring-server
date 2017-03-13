@@ -5,7 +5,7 @@ const patientSchema = mongoose.Schema({
   gender: { type: String, enum: ['Male', 'Female'], required: true },
   photo: String,
   age: Number,
-  bloodType: { tyep: String }
+  bloodType: { type: String }
 });
 
 const Patient = mongoose.model('Patient', patientSchema);
